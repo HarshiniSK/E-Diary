@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <title>E-Diary SignIn</title>
+    
     <style>
         body{
             background-image: url("bg.jpg");
@@ -32,27 +33,51 @@
             align-content: center;
         }
     </style>
+
+    <script>
+
+        function validateForm() {
+          var x="";
+          if (document.forms["signup"]["passwd"].value !== document.forms["signup"]["cpasswd"].value) {
+            x=x+"password is not matching \n";
+          }
+          if (document.forms["signup"]["passwd"].value.length < 6){
+              x=x+"Password should contain atleast 6 characters \n";
+          }
+          if (x){
+              //console.log("x");
+              //alert(x);
+              return(false);
+          }
+          return(true);
+        }
+    </script>
+
 </head>
 <body class="">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">E-Diary</a>
-        <div class="collapse navbar-collapse">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="signin.jsp">Sign In</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="signup.jsp">Sign Up<span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">E-Diary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="signin.jsp">Sign In</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="signup.jsp">Sign Up</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
       <div  class="form">
           <div class="text-center" style="margin:5px 0px 10px 0px;">
             <h3 class="text-center">Sign Up</h3>
             
           </div>
-        <form action="signup" method="post">
+        <form action="signup" method="post" name="signup">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text">User Name</span>
@@ -85,8 +110,6 @@
               <div class="text-center">
             <small style="text-transform: uppercase;">Already a user? <a href="signin.jsp">Sign In here</a></small>
               </div>
-              
-              
         </form>
       </div>
     
